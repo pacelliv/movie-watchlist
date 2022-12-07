@@ -1,9 +1,8 @@
-const searchBtn = document.getElementById("searchBtn")
 const inputEl = document.getElementById("movieTitle")
 const movieEl = document.getElementById("moviesList")
 const watchList = JSON.parse(localStorage.getItem("watchlist")) || []
 
-searchBtn.addEventListener("click", () => {
+document.getElementById("searchBtn").addEventListener("click", () => {
     movieEl.innerHTML = ""
     getMovies()
 })
@@ -23,10 +22,8 @@ function getMovies() {
     fetch(`https://www.omdbapi.com/?apikey=511cf6a5&s=${inputEl.value}&r=json`)
         .then((res) => res.json())
         .then((movies) => {
-            //creates an array of titles
-            const titles = movies.Search.map((movie) => movie.Title)
-            //creates a new instance of titles without the duplicates
-            const moviesTitles = [...new Set(titles)]
+            const titles = movies.Search.map((movie) => movie.Title) //creates an array of titles
+            const moviesTitles = [...new Set(titles)] //creates a new instance of titles without the duplicates
             moviesTitles.map((title) => {
                 fetch(
                     `https://www.omdbapi.com/?apikey=511cf6a5&t=${title}&r=json&type=movie&plot=short`
@@ -47,8 +44,7 @@ function getMovies() {
 
 //render the HTML to the DOM
 function getMoviesHtml(details) {
-    const { Poster, Title, imdbRating, Runtime, Genre, Plot, imdbID, watchId } =
-        details
+    const { Poster, Title, imdbRating, Runtime, Genre, Plot, imdbID } = details
     movieEl.innerHTML += `
             <div class="movieContainer">
                 <div>
@@ -67,7 +63,7 @@ function getMoviesHtml(details) {
                         <p class="movieRunTime">${Runtime}</p>
                         <p class="movieGenre">${Genre}</p>
                         <div class="addRemove">
-                            <img id="${imdbID}" class="addBtn" onclick="addMovie(${imdbID})" src="./images/add-icon.png"/>
+                            <img id="addBtn" class="addBtn" data-imdbId="${imdbID}" src="./images/add-icon.png"/>
                             <p class="movieWatchlist">Watchlist</p>
                         </div>
                     </div>
@@ -77,13 +73,18 @@ function getMoviesHtml(details) {
         `
 }
 
+document.addEventListener("click", (e) => {
+    if (e.target.dataset.imdbid) addMovie(e.target.dataset.imdbid)
+})
+
 //add movie to My Watchlist
-function addMovie(element) {
-    //verifies if the movie is already stored in watchList array
-    watchList.indexOf(element.id) ? watchList.push(element.id) : null
-    const addIconEl = document.getElementById(element.id)
-    addIconEl.removeAttribute("onclick")
-    addIconEl.src = "./images/checkmark-icon.png"
-    //add movie to localStorage
-    localStorage.setItem("watchlist", JSON.stringify(watchList))
+function addMovie(id) {
+    if (watchList.indexOf(id) === -1) watchList.push(id) // verifies if the movie is already stored in watchList array
+    document.querySelectorAll(".addBtn").forEach((button) => {
+        if (button.dataset.imdbid === id) {
+            button.disabled = true
+            button.src = "./images/checkmark-icon.png"
+        }
+    })
+    localStorage.setItem("watchlist", JSON.stringify(watchList)) //add movie to localStorage
 }

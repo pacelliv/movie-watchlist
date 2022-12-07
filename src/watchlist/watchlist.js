@@ -18,7 +18,9 @@ function getMoviesHtml(details) {
     movieEl.innerHTML += `
             <div id=${imdbID} class="movieContainer">
                 <div>
-                    <img class="moviePoster" src=${Poster}/>
+                    <img class="moviePoster" src="${
+                        Poster === "N/A" ? "../../images/not-found.png" : Poster
+                    }" />
                 </div>
                 
                 <div class="contentDetails">
@@ -31,7 +33,7 @@ function getMoviesHtml(details) {
                         <p class="movieRunTime">${Runtime}</p>
                         <p class="movieGenre">${Genre}</p>
                         <div class="addRemove">
-                            <img id="${imdbID}" class="addBtn" onclick="removeMovie(${imdbID})" src="../../images/remove-icon.png"/>
+                            <img id="removeBtn" class="addBtn" data-imdbId="${imdbID}" src="../../images/remove-icon.png"/>
                             <p class="movieWatchlist">Remove</p>
                         </div>
                     </div>
@@ -41,16 +43,22 @@ function getMoviesHtml(details) {
         `
 }
 
+document.addEventListener("click", (e) => {
+    if (e.target.dataset.imdbid) removeMovie(e.target.dataset.imdbid)
+})
+
 // this function remove movie from the DOM and from localstorage
 function removeMovie(element) {
     for (const movie of movieEl.children) {
-        if (element.id === movie.id) {
+        console.log(movie)
+        if (element === movie.id) {
             movieEl.removeChild(movie)
         }
     }
-    // deletes an specific element from the watchList array
-    watchList = watchList.filter((item) => item !== element.id)
-    //updates localStorage
+    // // deletes an specific element from the watchList array
+    watchList = watchList.filter((item) => item !== element)
+    console.log(watchList)
+    // //updates localStorage
     localStorage.setItem("watchlist", JSON.stringify(watchList))
     if (watchList.length === 0) {
         movieEl.innerHTML = getMessageHtml()
