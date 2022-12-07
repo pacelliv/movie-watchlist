@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <!-- Google Font -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;800&display=swap"
+            rel="stylesheet"
+        />
+        
+        <title>Movie Beacon</title>
+      <link rel="stylesheet" href="/movie-watchlist/assets/index.b19bc129.css">
+    </head>
+    <body>
+        <div class="container" id="container">
+            <div class="containerHeader">
+                <h1>Movie Beacon</h1>
+                <a href="watchlist.html" class="watchlist">My Watchlist</a>
+            </div>
+            <div class="searchBar">
+                <input
+                    id="movieTitle"
+                    type="text"
+                    placeholder="Search for a movie"
+                />
+                <button id="searchBtn">Search</button>
+            </div>
+            <div id="moviesList" class="containerContent"></div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
