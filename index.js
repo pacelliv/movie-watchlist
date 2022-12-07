@@ -53,9 +53,7 @@ function getMoviesHtml(details) {
             <div class="movieContainer">
                 <div>
                     <img class="moviePoster" src="${
-                        Poster === "N/A"
-                            ? "./public/images/not-found.png"
-                            : Poster
+                        Poster === "N/A" ? "./images/not-found.png" : Poster
                     }"/>
                 </div>
                 
@@ -85,7 +83,7 @@ function addMovie(element) {
     watchList.indexOf(element.id) ? watchList.push(element.id) : null
     const addIconEl = document.getElementById(element.id)
     addIconEl.removeAttribute("onclick")
-    addIconEl.src = "./public/images/checkmark-icon.png"
+    addIconEl.src = "./images/checkmark-icon.png"
     //add movie to localStorage
     localStorage.setItem("watchlist", JSON.stringify(watchList))
 }
