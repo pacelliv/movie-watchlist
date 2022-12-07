@@ -3,7 +3,7 @@
 ## This is a solution to the Movie Watchlist solo project from Scrimba
 
 <div align="center">
-    <img src="./images/movie-beacon-screenshot.png">
+    <img src="./public/images/movie-beacon-screenshot.png">
 </div>
 
 ## Overview
@@ -62,9 +62,9 @@ $ yarn build # npm run build
 
 -   Head over to https://vitejs.dev/ to learn more about using vite
 -   Using the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
--   Window.localStorage(https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
--   JSON.stringify(https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)
--   JSON.parse(https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)
+-   [Window.localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+-   [JSON.stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify)
+-   [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)
 
 ## Outro ⭐️
 
