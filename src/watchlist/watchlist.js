@@ -3,6 +3,12 @@ const movieEl = document.getElementById("moviesList")
 
 watchList.length ? getMovies() : (movieEl.innerHTML = getMessageHtml())
 
+document.addEventListener("click", (e) => {
+    if (e.target.dataset.imdbid) removeMovie(e.target.dataset.imdbid)
+})
+
+/* getMovies:
+Makes call for movie data to the OMBd API using the movie IDs stored in localStorage */
 function getMovies() {
     watchList.map((id) => {
         fetch(
@@ -13,6 +19,8 @@ function getMovies() {
     })
 }
 
+/* getMoviesHtml:
+Generates HTML string using the movies details passed from getMovies() */
 function getMoviesHtml(details) {
     const { Poster, Title, imdbRating, Runtime, Genre, Plot, imdbID } = details
     movieEl.innerHTML += `
@@ -43,28 +51,24 @@ function getMoviesHtml(details) {
         `
 }
 
-document.addEventListener("click", (e) => {
-    if (e.target.dataset.imdbid) removeMovie(e.target.dataset.imdbid)
-})
-
-// this function remove movie from the DOM and from localstorage
+/* removeMovie:
+removes a movie from the DOM and from localstorage */
 function removeMovie(element) {
     for (const movie of movieEl.children) {
-        console.log(movie)
         if (element === movie.id) {
             movieEl.removeChild(movie)
         }
     }
-    // // deletes an specific element from the watchList array
-    watchList = watchList.filter((item) => item !== element)
-    console.log(watchList)
-    // //updates localStorage
-    localStorage.setItem("watchlist", JSON.stringify(watchList))
+
+    watchList = watchList.filter((item) => item !== element) // deletes an specific element from the watchList array
+    localStorage.setItem("watchlist", JSON.stringify(watchList)) //updates localStorage
     if (watchList.length === 0) {
         movieEl.innerHTML = getMessageHtml()
     }
 }
 
+/* getMessageHtml: 
+Render a message to the DOM if no movie has been searched */
 function getMessageHtml() {
     return `
         <p class="emptyWatchlist">Your watchlist is looking a little empty...</p>
