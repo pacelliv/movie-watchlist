@@ -6,12 +6,14 @@
     <img src="./public/images/movie-beacon-screenshot.png">
 </div>
 
+### Live Site: https://lambent-bavarois-685106.netlify.app/index.html
+
 ## Overview
 
 The challenge consisted in:
 
 -   Making API calls to the OMBd API to get movie data by name.
--   Rendering to the DOM the movies searched.
+-   Rendering to the DOM the searched movies.
 -   Give the user the ability to store movies to the watchlist using localStorage.
 -   Fetching the stored movies from localStorage and render them to the DOM.
 -   Give the user the ability to remove movies from the watchlist.
@@ -25,6 +27,7 @@ The challenge consisted in:
 -   Vanilla JavaScript
 -   CSS
 -   Fetch API
+-   Flexbox
 
 ## Quick start:
 
