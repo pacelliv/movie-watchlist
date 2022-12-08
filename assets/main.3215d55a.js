@@ -1,4 +1,4 @@
-import"./modulepreload-polyfill.c7c6310f.js";const v=document.getElementById("movieTitle"),a=document.getElementById("moviesList"),o=JSON.parse(localStorage.getItem("watchlist"))||[];let c=[];document.addEventListener("click",e=>{e.target.id==="searchBtn"?(a.innerHTML="",l()):e.target.dataset.imdbid&&g(e.target.dataset.imdbid)});a.innerHTML?l():a.innerHTML=`
+import"./index.7a991a0b.js";const v=document.getElementById("movieTitle"),a=document.getElementById("moviesList"),o=JSON.parse(localStorage.getItem("watchlist"))||[];let c=[];document.addEventListener("click",e=>{e.target.id==="searchBtn"?(a.innerHTML="",l()):e.target.dataset.imdbid&&g(e.target.dataset.imdbid)});a.innerHTML?l():a.innerHTML=`
             <div class="emptyBlock">
                 <img class="filmIcon" src="./images/film-icon.png"/>
             </div>
