@@ -1,7 +1,13 @@
+import { resolve } from "path"
 import { defineConfig } from "vite"
 
 export default defineConfig({
-    plugins: [],
-    base: "/movie-watchlist/",
-    endpoint: "/src/watchlist/index.html/",
+    build: {
+        rollupOptions: {
+            input: {
+                main: resolve(__dirname, "index.html"),
+                nested: resolve(__dirname, "src/watchlist/index.html"),
+            },
+        },
+    },
 })
