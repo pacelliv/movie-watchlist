@@ -103,7 +103,7 @@ i {
 .containerHeader {
     height: 200px;
     padding: 0.5em;
-    background-image: url("../../images/movies-posters.jpg");
+    background-image: url("../../public/images/movies-posters.jpg");
     background-size: 40em;
     background-position-y: -550px;
     background-color: #404040;
@@ -123,7 +123,7 @@ i {
 .searchBar input {
     width: 75%;
     background-color: #ffffff;
-    background-image: url("../../images/search-icon.png");
+    background-image: url("../../public/images/search-icon.png");
     background-repeat: no-repeat;
     background-position: 5% 50%;
     text-indent: 10%;
